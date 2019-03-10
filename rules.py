@@ -1,7 +1,8 @@
 import myglobal
 from tinter import *
 from data import *
-from sympy import *
+
+Symbol = str    # A Lisp Symbol is implemented as a Python str
 
 class Rule(object):
 
@@ -61,6 +62,10 @@ def addRule(trigger, body):
     print("====== debugging the tre with New Rule =======")
     printRule(rule)
 
+    # Go into the database and see what it might trigger on
+    for candidate in getCandidates(trigger, myglobal._tre_):
+        pass
+
 
 def printRule(rule):
     """
@@ -68,7 +73,7 @@ def printRule(rule):
     :param rule:
     :return:
     """
-    print("Rule ", rule.counter, rule.trigger, rule.body)
+    print("Rule #", rule.counter, rule.trigger, rule.body)
 
 
 if __name__ == '__main__':

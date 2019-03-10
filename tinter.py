@@ -3,7 +3,7 @@ from rules import *
 
 class Tre(object):
 
-    def __init__(self, title=None, dbclassTable=None,
+    def __init__(self, title=None, dbclassTable={},
                  debugging=False, queue=None,
                  rule_counter=0, rules_run=0):
         self.title = title
@@ -34,9 +34,6 @@ def createTre(title, debugging=False):
 
 def runForms(tre, forms):
     for form in forms:
-        print('what does the form like???')
-        result = parse(form)
-        print('result => ', result[0])
         eval(parse(form))
 
 

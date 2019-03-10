@@ -20,20 +20,19 @@ def getDbClass(fact, tre):
     elif isinstance(fact, list):
         return getDbClass(fact[0], tre)
     elif isinstance(fact, Symbol):
-        dbclass = tre.dbclassTable[fact]
+        dbclass = tre.dbclassTable[fact] if fact in tre.dbclassTable else None
         if dbclass != None:
             return dbclass
         else:
             dbclass = DbClass(name=fact, tre=tre, facts=[], rules=[])
             tre.dbclassTable[fact] = dbclass
+            return dbclass
 
-"""
-if __name__ == '__main__':
-    v = '?x'
-    print(isinstance(v, Symbol))
-    v = [1,2,3]
-    print(isinstance(v, list))
-    v = []
-    v.append(1)
-    print(v)
-"""
+def getCandidates(pattern, tre):
+    """
+    Retrieve all facts from the dbclass of a given pattern
+    :param pattern:
+    :param tre:
+    :return:
+    """
+    return getDbClass(pattern, tre).facts
