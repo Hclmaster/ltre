@@ -4,7 +4,7 @@ from rules import *
 class Tre(object):
 
     def __init__(self, title=None, dbclassTable={},
-                 debugging=False, queue=None,
+                 debugging=False, queue=[],
                  rule_counter=0, rules_run=0):
         self.title = title
         self.dbclassTable = dbclassTable

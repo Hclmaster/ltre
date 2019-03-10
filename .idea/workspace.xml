@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98a99586-8220-4072-8866-862ed37a922b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unify.py" beforeDir="false" afterPath="$PROJECT_DIR$/unify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myglobal.py" beforeDir="false" afterPath="$PROJECT_DIR$/myglobal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/rules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tinter.py" beforeDir="false" afterPath="$PROJECT_DIR$/tinter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,9 +14,9 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/tre$tinter.coverage" NAME="tinter Coverage Results" MODIFIED="1552175024193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tre$rules.coverage" NAME="rules Coverage Results" MODIFIED="1552187247792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tre$unify.coverage" NAME="unify Coverage Results" MODIFIED="1552247146015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tre$treex1.coverage" NAME="treex1 Coverage Results" MODIFIED="1552244371038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tre$unify.coverage" NAME="unify Coverage Results" MODIFIED="1552252532457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tre$rules.coverage" NAME="rules Coverage Results" MODIFIED="1552253566417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tre$treex1.coverage" NAME="treex1 Coverage Results" MODIFIED="1552253571362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tre$data.coverage" NAME="data Coverage Results" MODIFIED="1552186467220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tre$testFunction.coverage" NAME="testFunction Coverage Results" MODIFIED="1552226434033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tre$test.coverage" NAME="test Coverage Results" MODIFIED="1552182561261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -33,24 +34,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="10" />
+          <entry key="py" value="12" />
           <entry key="pyi" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="10" />
+          <entry key="Python" value="12" />
           <entry key="PythonStub" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="6926" />
+          <entry key="py" value="7541" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="6926" />
+          <entry key="Python" value="7541" />
         </counts>
       </usages-collector>
     </session>
@@ -73,11 +74,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tinter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            <state relative-caret-position="108">
+              <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1552226670439" expanded="true" signature="55:56" ph="..." />
+                <marker date="1552251089921" expanded="true" signature="55:56" ph="..." />
               </folding>
             </state>
           </provider>
@@ -86,38 +87,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rules.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="436">
+              <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1552227933774" expanded="true" signature="140:410" ph="..." />
-                <marker date="1552227933774" expanded="true" signature="443:448" ph="..." />
-                <marker date="1552227933774" expanded="true" signature="990:1998" ph="..." />
-                <marker date="1552227933774" expanded="true" signature="1300:1305" ph="..." />
-                <marker date="1552227933774" expanded="true" signature="1857:1998" ph="..." />
+                <marker date="1552253566412" expanded="true" signature="160:428" ph="..." />
+                <marker date="1552253566412" expanded="true" signature="461:466" ph="..." />
+                <marker date="1552253566412" expanded="true" signature="1008:2608" ph="..." />
+                <marker date="1552253566412" expanded="true" signature="1318:1323" ph="..." />
+                <marker date="1552253566412" expanded="true" signature="1913:2608" ph="..." />
+                <marker date="1552253566412" expanded="true" signature="2580:2608" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/unify.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="70" column="25" lean-forward="true" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
-              <folding>
-                <marker date="1552247438518" expanded="true" signature="161:166" ph="..." />
-                <marker date="1552247438518" expanded="true" signature="1423:2048" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
+            <state relative-caret-position="363">
+              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
                 <marker date="1552227933770" expanded="true" signature="162:163" ph="..." />
@@ -130,22 +119,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myglobal.py">
+        <entry file="file://$PROJECT_DIR$/unify.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="778">
+              <caret line="70" column="25" lean-forward="true" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+              <folding>
+                <marker date="1552247438518" expanded="true" signature="161:166" ph="..." />
+                <marker date="1552247438518" expanded="true" signature="1423:2048" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
+        <entry file="file://$PROJECT_DIR$/myglobal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1792">
-              <caret column="11" selection-start-column="11" selection-end-column="11" />
-              <folding>
-                <marker date="1552183597779" expanded="true" signature="4044:4046" ph="..." />
-              </folding>
+            <state relative-caret-position="114">
+              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -163,6 +153,8 @@
     <findStrings>
       <find>begin</find>
       <find>r</find>
+      <find>environment</find>
+      <find>queue</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,14 +164,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/myglobal.py" />
         <option value="$PROJECT_DIR$/treex1.py" />
         <option value="$PROJECT_DIR$/testFunction.py" />
-        <option value="$PROJECT_DIR$/tinter.py" />
         <option value="$PROJECT_DIR$/data.py" />
-        <option value="$PROJECT_DIR$/rules.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/unify.py" />
+        <option value="$PROJECT_DIR$/myglobal.py" />
+        <option value="$PROJECT_DIR$/tinter.py" />
+        <option value="$PROJECT_DIR$/rules.py" />
       </list>
     </option>
   </component>
@@ -256,7 +248,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.unify">
+  <component name="RunManager" selected="Python.treex1">
     <configuration name="data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tre" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -376,10 +368,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.unify" />
         <item itemvalue="Python.treex1" />
-        <item itemvalue="Python.testFunction" />
         <item itemvalue="Python.rules" />
+        <item itemvalue="Python.unify" />
+        <item itemvalue="Python.testFunction" />
         <item itemvalue="Python.data" />
       </list>
     </recent_temporary>
@@ -518,6 +510,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding>
+            <element signature="e#23#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+          <folding>
+            <marker date="1552183597779" expanded="true" signature="4044:4046" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/treex1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -529,80 +541,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
+    <entry file="file://$PROJECT_DIR$/myglobal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        <state relative-caret-position="114">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="778">
+          <caret line="70" column="25" lean-forward="true" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
           <folding>
-            <element signature="e#23#55#0" expanded="true" />
+            <marker date="1552247438518" expanded="true" signature="161:166" ph="..." />
+            <marker date="1552247438518" expanded="true" signature="1423:2048" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tinter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="108">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1552226670439" expanded="true" signature="55:56" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1552227933770" expanded="true" signature="162:163" ph="..." />
-            <marker date="1552227933770" expanded="true" signature="359:360" ph="..." />
-            <marker date="1552227933770" expanded="true" signature="359:364" ph="..." />
-            <marker date="1552227933770" expanded="true" signature="985:990" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myglobal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1792">
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-          <folding>
-            <marker date="1552183597779" expanded="true" signature="4044:4046" ph="..." />
+            <marker date="1552251089921" expanded="true" signature="55:56" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rules.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="436">
+          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1552227933774" expanded="true" signature="140:410" ph="..." />
-            <marker date="1552227933774" expanded="true" signature="443:448" ph="..." />
-            <marker date="1552227933774" expanded="true" signature="990:1998" ph="..." />
-            <marker date="1552227933774" expanded="true" signature="1300:1305" ph="..." />
-            <marker date="1552227933774" expanded="true" signature="1857:1998" ph="..." />
+            <marker date="1552253566412" expanded="true" signature="160:428" ph="..." />
+            <marker date="1552253566412" expanded="true" signature="461:466" ph="..." />
+            <marker date="1552253566412" expanded="true" signature="1008:2608" ph="..." />
+            <marker date="1552253566412" expanded="true" signature="1318:1323" ph="..." />
+            <marker date="1552253566412" expanded="true" signature="1913:2608" ph="..." />
+            <marker date="1552253566412" expanded="true" signature="2580:2608" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/unify.py">
+    <entry file="file://$PROJECT_DIR$/data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="70" column="25" lean-forward="true" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+        <state relative-caret-position="363">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
           <folding>
-            <marker date="1552247438518" expanded="true" signature="161:166" ph="..." />
-            <marker date="1552247438518" expanded="true" signature="1423:2048" ph="..." />
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1552227933770" expanded="true" signature="162:163" ph="..." />
+            <marker date="1552227933770" expanded="true" signature="359:360" ph="..." />
+            <marker date="1552227933770" expanded="true" signature="359:364" ph="..." />
+            <marker date="1552227933770" expanded="true" signature="985:990" ph="..." />
           </folding>
         </state>
       </provider>

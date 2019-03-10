@@ -1,13 +1,14 @@
 import myglobal
 from tinter import *
 from data import *
+from unify import *
 
 Symbol = str    # A Lisp Symbol is implemented as a Python str
 
 class Rule(object):
 
     def __init__(self, counter=0, dbclass=None, trigger=None,
-                 body=None, environment=None):
+                 body=None, environment={}):
         self.counter = counter
         self.dbclass = dbclass
         self.trigger = trigger
@@ -64,7 +65,7 @@ def addRule(trigger, body):
 
     # Go into the database and see what it might trigger on
     for candidate in getCandidates(trigger, myglobal._tre_):
-        pass
+        tryRuleOn(rule, candidate, myglobal._tre_)
 
 
 def printRule(rule):
@@ -75,14 +76,47 @@ def printRule(rule):
     """
     print("Rule #", rule.counter, rule.trigger, rule.body)
 
+def tryRuleOn(rule, fact, tre):
+    """
+    Try a single rule on a single fact
+    If the trigger matches, queue it up
+    :param rule:
+    :param fact:
+    :param tre:
+    :return:
+    """
+    bindings = unify(fact, rule.trigger, rule.environment)
+
+    if bindings != None:
+        enqueue([rule.body, bindings], tre)
+
+def enqueue(new, tre):
+    print('previous size => ', len(myglobal._tre_.queue))
+    tre.queue.append(new)
+    print('after size => ', len(myglobal._tre_.queue))
+
+def dequeue(tre):
+    if len(tre.queue) > 0:
+        tre.queue.pop(0)
+
 
 if __name__ == '__main__':
     forms = ['(rule (implies ?ante ?conse) (rule ?ante (assert! ?conse)))',
              '(rule (not (not ?x)) (assert! ?x))']
-
+    """
     for form in forms:
         print('form => ', form)
         print("tokenize result ======>")
         print(tokenize(form))
         print("parse result =====> ")
         print(parse(form))
+    """
+
+    print('========================')
+    t = []
+    lst = [['implies', '?ante', '?conse'], {'?x': 1, '?y': 2}]
+    t.append(lst)
+    print(t)
+
+    t.append(lst)
+    print(t)
