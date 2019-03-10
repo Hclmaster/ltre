@@ -1,6 +1,18 @@
 import myglobal
 from tinter import *
+from data import *
 from sympy import *
+
+class Rule(object):
+
+    def __init__(self, counter=0, dbclass=None, trigger=None,
+                 body=None, environment=None):
+        self.counter = counter
+        self.dbclass = dbclass
+        self.trigger = trigger
+        self.body = body
+        self.environment = environment
+
 
 def tokenize(chars: str) -> list:
     return chars.replace('(', '( ').replace(')', ' )').split()
@@ -29,6 +41,35 @@ def atom(token: str):
         try: return float(token)
         except ValueError:
             return Symbol(token)
+
+#### eval
+def eval(x):
+    # all values in the parse result list are symbol!
+    if x[0] == Symbol('rule'):
+        addRule(x[1], x[2:])
+
+def addRule(trigger, body):
+    # First build the struct
+    myglobal._tre_.rule_counter += 1
+    rule = Rule(trigger=trigger, body=body,
+                counter=myglobal._tre_.rule_counter, environment=myglobal._env_)
+
+    # Now index it
+    dbclass = getDbClass(trigger, myglobal._tre_)
+    dbclass.rules.append(rule)
+    rule.dbclass = dbclass
+    print("====== debugging the tre with New Rule =======")
+    printRule(rule)
+
+
+def printRule(rule):
+    """
+    Print representation of rule
+    :param rule:
+    :return:
+    """
+    print("Rule ", rule.counter, rule.trigger, rule.body)
+
 
 if __name__ == '__main__':
     forms = ['(rule (implies ?ante ?conse) (rule ?ante (assert! ?conse)))',

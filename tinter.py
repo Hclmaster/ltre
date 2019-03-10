@@ -1,4 +1,5 @@
 import myglobal
+from rules import *
 
 class Tre(object):
 
@@ -31,12 +32,16 @@ def createTre(title, debugging=False):
     return Tre(title=title, dbclassTable={}, debugging=debugging)
 
 
-def runForms(forms):
+def runForms(tre, forms):
     for form in forms:
-        print('form => ', form)
+        print('what does the form like???')
+        result = parse(form)
+        print('result => ', result[0])
+        eval(parse(form))
 
 
+"""
 if __name__ == "__main__":
     inTre(createTre("Ex1"))
     print(myglobal._tre_.title)
-
+"""
