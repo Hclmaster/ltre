@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98a99586-8220-4072-8866-862ed37a922b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/myglobal.py" beforeDir="false" afterPath="$PROJECT_DIR$/myglobal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/rules.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tinter.py" beforeDir="false" afterPath="$PROJECT_DIR$/tinter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/treex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/treex1.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,42 +17,43 @@
     <SUITE FILE_PATH="coverage/tre$tinter.coverage" NAME="tinter Coverage Results" MODIFIED="1552175024193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tre$unify.coverage" NAME="unify Coverage Results" MODIFIED="1552252532457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tre$rules.coverage" NAME="rules Coverage Results" MODIFIED="1552253566417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tre$treex1.coverage" NAME="treex1 Coverage Results" MODIFIED="1552253571362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tre$data.coverage" NAME="data Coverage Results" MODIFIED="1552186467220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tre$treex1.coverage" NAME="treex1 Coverage Results" MODIFIED="1552322593853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tre$testFunction.coverage" NAME="testFunction Coverage Results" MODIFIED="1552226434033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tre$data.coverage" NAME="data Coverage Results" MODIFIED="1552314342232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tre$test.coverage" NAME="test Coverage Results" MODIFIED="1552182561261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1835589230">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.2" value="3" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="12" />
+          <entry key="py" value="15" />
           <entry key="pyi" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="12" />
+          <entry key="Python" value="15" />
           <entry key="PythonStub" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="7541" />
+          <entry key="py" value="10027" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="7541" />
+          <entry key="Python" value="10027" />
         </counts>
       </usages-collector>
     </session>
@@ -59,60 +61,68 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/treex1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1552188122528" expanded="true" signature="66:67" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tinter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+            <state relative-caret-position="344">
+              <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1552251089921" expanded="true" signature="55:56" ph="..." />
+                <marker date="1552312854562" expanded="true" signature="55:56" ph="..." />
+                <marker date="1552312854562" expanded="true" signature="817:819" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rules.py">
+        <entry file="file://$PROJECT_DIR$/treex1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+            <state relative-caret-position="285">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1552253566412" expanded="true" signature="160:428" ph="..." />
-                <marker date="1552253566412" expanded="true" signature="461:466" ph="..." />
-                <marker date="1552253566412" expanded="true" signature="1008:2608" ph="..." />
-                <marker date="1552253566412" expanded="true" signature="1318:1323" ph="..." />
-                <marker date="1552253566412" expanded="true" signature="1913:2608" ph="..." />
-                <marker date="1552253566412" expanded="true" signature="2580:2608" ph="..." />
+                <marker date="1552321114223" expanded="true" signature="66:67" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="55" column="48" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+                <marker date="1552317153202" expanded="true" signature="184:185" ph="..." />
+                <marker date="1552317153202" expanded="true" signature="369:640" ph="..." />
+                <marker date="1552317153202" expanded="true" signature="666:667" ph="..." />
+                <marker date="1552317153202" expanded="true" signature="666:671" ph="..." />
+                <marker date="1552317153202" expanded="true" signature="1292:1297" ph="..." />
+                <marker date="1552317153202" expanded="true" signature="1439:1444" ph="..." />
+                <marker date="1552317153202" expanded="true" signature="1714:1719" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data.py">
+        <entry file="file://$PROJECT_DIR$/rules.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+            <state relative-caret-position="484">
+              <caret line="151" column="24" selection-start-line="151" selection-start-column="24" selection-end-line="151" selection-end-column="24" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1552227933770" expanded="true" signature="162:163" ph="..." />
-                <marker date="1552227933770" expanded="true" signature="359:360" ph="..." />
-                <marker date="1552227933770" expanded="true" signature="359:364" ph="..." />
-                <marker date="1552227933770" expanded="true" signature="985:990" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="160:711" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="443:711" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="744:749" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="1291:3824" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="1666:1671" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="2261:3824" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="2463:2571" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="2604:2765" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="3305:3486" ph="..." />
+                <marker date="1552323711046" expanded="true" signature="3667:3824" ph="..." />
               </folding>
             </state>
           </provider>
@@ -121,8 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/unify.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="778">
-              <caret line="70" column="25" lean-forward="true" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+            <state relative-caret-position="211">
+              <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
               <folding>
                 <marker date="1552247438518" expanded="true" signature="161:166" ph="..." />
                 <marker date="1552247438518" expanded="true" signature="1423:2048" ph="..." />
@@ -135,7 +145,7 @@
         <entry file="file://$PROJECT_DIR$/myglobal.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="114">
-              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -155,6 +165,10 @@
       <find>r</find>
       <find>environment</find>
       <find>queue</find>
+      <find>my</find>
+      <find>tryRules</find>
+      <find>print</find>
+      <find>enqueue</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -164,13 +178,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/treex1.py" />
         <option value="$PROJECT_DIR$/testFunction.py" />
-        <option value="$PROJECT_DIR$/data.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/unify.py" />
         <option value="$PROJECT_DIR$/myglobal.py" />
         <option value="$PROJECT_DIR$/tinter.py" />
+        <option value="$PROJECT_DIR$/data.py" />
+        <option value="$PROJECT_DIR$/treex1.py" />
         <option value="$PROJECT_DIR$/rules.py" />
       </list>
     </option>
@@ -215,20 +229,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="tre" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tre" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -369,10 +370,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.treex1" />
+        <item itemvalue="Python.data" />
         <item itemvalue="Python.rules" />
         <item itemvalue="Python.unify" />
         <item itemvalue="Python.testFunction" />
-        <item itemvalue="Python.data" />
       </list>
     </recent_temporary>
   </component>
@@ -425,6 +426,30 @@
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18681319" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32959184" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32959184" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -442,16 +467,6 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="isinstance(x, Symbol)" language="Python" />
-        <watch expression="isinstance(x, List)" language="Python" />
-        <watch expression="x[0]" language="Python" />
-        <watch expression="env[x]" language="Python" />
-        <watch expression="proc" language="Python" />
-        <watch expression="x[1:]" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -503,13 +518,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/testFunction.py" />
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -517,6 +526,13 @@
           <folding>
             <element signature="e#23#55#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///anaconda3/envs/problem-solver/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="322" selection-start-line="322" selection-end-line="322" />
         </state>
       </provider>
     </entry>
@@ -530,28 +546,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/treex1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1552188122528" expanded="true" signature="66:67" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myglobal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/unify.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="778">
-          <caret line="70" column="25" lean-forward="true" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+        <state relative-caret-position="211">
+          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
           <folding>
             <marker date="1552247438518" expanded="true" signature="161:166" ph="..." />
             <marker date="1552247438518" expanded="true" signature="1423:2048" ph="..." />
@@ -559,43 +564,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tinter.py">
+    <entry file="file://$PROJECT_DIR$/treex1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+        <state relative-caret-position="285">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1552251089921" expanded="true" signature="55:56" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rules.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1552253566412" expanded="true" signature="160:428" ph="..." />
-            <marker date="1552253566412" expanded="true" signature="461:466" ph="..." />
-            <marker date="1552253566412" expanded="true" signature="1008:2608" ph="..." />
-            <marker date="1552253566412" expanded="true" signature="1318:1323" ph="..." />
-            <marker date="1552253566412" expanded="true" signature="1913:2608" ph="..." />
-            <marker date="1552253566412" expanded="true" signature="2580:2608" ph="..." />
+            <marker date="1552321114223" expanded="true" signature="66:67" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        <state relative-caret-position="222">
+          <caret line="55" column="48" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1552227933770" expanded="true" signature="162:163" ph="..." />
-            <marker date="1552227933770" expanded="true" signature="359:360" ph="..." />
-            <marker date="1552227933770" expanded="true" signature="359:364" ph="..." />
-            <marker date="1552227933770" expanded="true" signature="985:990" ph="..." />
+            <marker date="1552317153202" expanded="true" signature="184:185" ph="..." />
+            <marker date="1552317153202" expanded="true" signature="369:640" ph="..." />
+            <marker date="1552317153202" expanded="true" signature="666:667" ph="..." />
+            <marker date="1552317153202" expanded="true" signature="666:671" ph="..." />
+            <marker date="1552317153202" expanded="true" signature="1292:1297" ph="..." />
+            <marker date="1552317153202" expanded="true" signature="1439:1444" ph="..." />
+            <marker date="1552317153202" expanded="true" signature="1714:1719" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tinter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1552312854562" expanded="true" signature="55:56" ph="..." />
+            <marker date="1552312854562" expanded="true" signature="817:819" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rules.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="151" column="24" selection-start-line="151" selection-start-column="24" selection-end-line="151" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1552323711046" expanded="true" signature="160:711" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="443:711" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="744:749" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="1291:3824" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="1666:1671" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="2261:3824" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="2463:2571" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="2604:2765" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="3305:3486" ph="..." />
+            <marker date="1552323711046" expanded="true" signature="3667:3824" ph="..." />
           </folding>
         </state>
       </provider>

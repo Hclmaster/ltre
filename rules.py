@@ -15,6 +15,17 @@ class Rule(object):
         self.body = body
         self.environment = environment
 
+def showRules():
+    """
+    Print a list of all rules within the default tre.
+    :return:
+    """
+    counter = 0
+    for key,dbclass in myglobal._tre_.dbclassTable.items():
+        for rule in dbclass.rules:
+            counter += 1
+            printRule(rule)
+    return counter
 
 def tokenize(chars: str) -> list:
     return chars.replace('(', '( ').replace(')', ' )').split()
@@ -49,6 +60,8 @@ def eval(x):
     # all values in the parse result list are symbol!
     if x[0] == Symbol('rule'):
         addRule(x[1], x[2:])
+    elif x[0] == Symbol('assert!'):
+        assertFact(x[1:][0])
 
 def addRule(trigger, body):
     # First build the struct
@@ -76,6 +89,21 @@ def printRule(rule):
     """
     print("Rule #", rule.counter, rule.trigger, rule.body)
 
+def tryRules(fact, tre):
+    #print('tryRules Fact => ', fact)
+    for rule in getCandidateRules(fact, tre):
+        #printRule(rule)
+        tryRuleOn(rule, fact, tre)
+
+def getCandidateRules(fact, tre):
+    """
+    Return lists of all applicable rules for a given fact
+    :param fact:
+    :param tre:
+    :return:
+    """
+    return getDbClass(fact, tre).rules
+
 def tryRuleOn(rule, fact, tre):
     """
     Try a single rule on a single fact
@@ -85,19 +113,43 @@ def tryRuleOn(rule, fact, tre):
     :param tre:
     :return:
     """
+    #print('tryRuleOn ====== ')
+    #print('rule trigger => ', rule.trigger, ' fact => ', fact)
+    #print('rule environment => ', rule.environment)
     bindings = unify(fact, rule.trigger, rule.environment)
+    #print('bindings => ', bindings)
 
     if bindings != None:
         enqueue([rule.body, bindings], tre)
 
+def runRules(tre):
+    counter = 0
+    while len(tre.queue) > 0:
+        rulePair = dequeue(tre)
+        counter += 1
+
+    if tre.debugging:
+        print('Total', counter, 'rules run!')
+    runRule(rulePair, tre)
+
 def enqueue(new, tre):
-    print('previous size => ', len(myglobal._tre_.queue))
     tre.queue.append(new)
-    print('after size => ', len(myglobal._tre_.queue))
 
 def dequeue(tre):
     if len(tre.queue) > 0:
-        tre.queue.pop(0)
+        return tre.queue.pop(0)
+    else:
+        return None
+
+def runRule(pair, tre):
+    """
+    Here pair is ([body], {bindings})
+    :param pair:
+    :param tre:
+    :return:
+    """
+    myglobal._env_ = pair[1]
+    myglobal._tre_ = tre
 
 
 if __name__ == '__main__':
