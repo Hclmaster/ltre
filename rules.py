@@ -74,8 +74,8 @@ def addRule(trigger, body):
     dbclass = getDbClass(trigger, myglobal._tre_)
     dbclass.rules.append(rule)
     rule.dbclass = dbclass
-    print("====== debugging the tre with New Rule =======")
-    printRule(rule)
+    #print("====== debugging the tre with New Rule =======")
+    #printRule(rule)
 
     # Go into the database and see what it might trigger on
     for candidate in getCandidates(trigger, myglobal._tre_):
@@ -118,7 +118,7 @@ def tryRuleOn(rule, fact, tre):
     #print('rule trigger => ', rule.trigger, ' fact => ', fact)
     #print('rule environment => ', rule.environment)
     bindings = unify(fact, rule.trigger, rule.environment)
-    print('bindings => ', bindings)
+    #print('bindings => ', bindings)
 
     if bindings != None:
         enqueue([rule.body, bindings], tre)
@@ -155,7 +155,7 @@ def runRule(pair, tre):
 
     tre.rules_run += 1
 
-    print("======= run Rule Part =========")
+    #print("======= run Rule Part =========")
     newBody = copy.deepcopy(pair[0])
 
     for item in newBody:
@@ -163,7 +163,7 @@ def runRule(pair, tre):
             if key in item:
                 item[item.index(key)] = value
 
-    print('pair => ', pair)
+    #print('pair => ', pair)
     #print('newBody => ', newBody)
     eval(newBody[0])
 
