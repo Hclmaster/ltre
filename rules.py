@@ -2,6 +2,7 @@ import myglobal
 from tinter import *
 from data import *
 from unify import *
+import copy
 
 Symbol = str    # A Lisp Symbol is implemented as a Python str
 
@@ -155,17 +156,15 @@ def runRule(pair, tre):
     tre.rules_run += 1
 
     print("======= run Rule Part =========")
-    print('pair[0] => ', pair[0])
-    print('pair[1] => ', pair[1])
+    newBody = copy.deepcopy(pair[0])
 
-    newBody = pair[0].copy()
     for item in newBody:
         for key, value in pair[1].items():
             if key in item:
                 item[item.index(key)] = value
 
     print('pair => ', pair)
-    print('newBody => ', newBody)
+    #print('newBody => ', newBody)
     eval(newBody[0])
 
 
@@ -180,12 +179,3 @@ if __name__ == '__main__':
         print("parse result =====> ")
         print(parse(form))
     """
-
-    print('========================')
-    t = []
-    lst = [['implies', '?ante', '?conse'], {'?x': 1, '?y': 2}]
-    t.append(lst)
-    print(t)
-
-    t.append(lst)
-    print(t)
