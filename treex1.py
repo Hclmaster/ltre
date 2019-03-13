@@ -12,5 +12,5 @@ def ex1 (debugging = False):
 if __name__ == '__main__':
     ex1(False)
     print(myglobal._tre_.title)
-    #showRules()
-    #showData()
+    showRules()
+    showData()

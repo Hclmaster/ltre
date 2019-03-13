@@ -117,7 +117,7 @@ def tryRuleOn(rule, fact, tre):
     #print('rule trigger => ', rule.trigger, ' fact => ', fact)
     #print('rule environment => ', rule.environment)
     bindings = unify(fact, rule.trigger, rule.environment)
-    #print('bindings => ', bindings)
+    print('bindings => ', bindings)
 
     if bindings != None:
         enqueue([rule.body, bindings], tre)
@@ -127,17 +127,18 @@ def runRules(tre):
     while len(tre.queue) > 0:
         rulePair = dequeue(tre)
         counter += 1
+        runRule(rulePair, tre)
 
     if tre.debugging:
         print('Total', counter, 'rules run!')
-    runRule(rulePair, tre)
 
+# It's a LIFO queue
 def enqueue(new, tre):
     tre.queue.append(new)
 
 def dequeue(tre):
     if len(tre.queue) > 0:
-        return tre.queue.pop(0)
+        return tre.queue.pop()
     else:
         return None
 
@@ -150,6 +151,22 @@ def runRule(pair, tre):
     """
     myglobal._env_ = pair[1]
     myglobal._tre_ = tre
+
+    tre.rules_run += 1
+
+    print("======= run Rule Part =========")
+    print('pair[0] => ', pair[0])
+    print('pair[1] => ', pair[1])
+
+    newBody = pair[0].copy()
+    for item in newBody:
+        for key, value in pair[1].items():
+            if key in item:
+                item[item.index(key)] = value
+
+    print('pair => ', pair)
+    print('newBody => ', newBody)
+    eval(newBody[0])
 
 
 if __name__ == '__main__':

@@ -35,6 +35,7 @@ def createTre(title, debugging=False):
 def runForms(tre, forms):
     for form in forms:
         eval(parse(form))
+        runRules(tre)
 
 
 """
