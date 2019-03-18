@@ -1,7 +1,7 @@
 import myglobal
-from tinter import *
-from data import *
-from unify import *
+from ltinter import *
+from ldata import *
+from lunify import *
 import copy
 
 Symbol = str    # A Lisp Symbol is implemented as a Python str
@@ -9,7 +9,7 @@ Symbol = str    # A Lisp Symbol is implemented as a Python str
 class Rule(object):
 
     def __init__(self, counter=0, dbclass=None, trigger=None,
-                 body=None, environment={}, label=None):
+                 body=None, environment={}, label=[]):
         self.counter = counter
         self.dbclass = dbclass
         self.trigger = trigger
@@ -17,13 +17,21 @@ class Rule(object):
         self.environment = environment
         self.label = label
 
+def standard_env():
+    """
+    An environment with some Lisp standard procedure
+    :return:
+    """
+    pass
+
+
 def showRules():
     """
-    Print a list of all rules within the default tre.
+    Print a list of all rules within the default ltre.
     :return:
     """
     counter = 0
-    for key,dbclass in myglobal._tre_.dbclassTable.items():
+    for key,dbclass in myglobal._ltre_.dbclassTable.items():
         for rule in dbclass.rules:
             counter += 1
             printRule(rule)
@@ -69,20 +77,20 @@ def eval(x):
 
 def addRule(trigger, body):
     # First build the struct
-    myglobal._tre_.rule_counter += 1
+    myglobal._ltre_.rule_counter += 1
     rule = Rule(trigger=trigger, body=body,
-                counter=myglobal._tre_.rule_counter, environment=myglobal._env_)
+                counter=myglobal._ltre_.rule_counter, environment=myglobal._env_)
 
     # Now index it
-    dbclass = getDbClass(trigger, myglobal._tre_)
+    dbclass = getDbClass(trigger, myglobal._ltre_)
     dbclass.rules.append(rule)
     rule.dbclass = dbclass
-    #print("====== debugging the tre with New Rule =======")
+    #print("====== debugging the ltre with New Rule =======")
     #printRule(rule)
 
     # Go into the database and see what it might trigger on
-    for candidate in getCandidates(trigger, myglobal._tre_):
-        tryRuleOn(rule, candidate, myglobal._tre_)
+    for candidate in getCandidates(trigger, myglobal._ltre_):
+        tryRuleOn(rule, candidate, myglobal._ltre_)
 
 
 def printRule(rule):
@@ -93,70 +101,84 @@ def printRule(rule):
     """
     print("Rule #", rule.counter, rule.trigger, rule.body)
 
-def tryRules(fact, tre):
+def tryRules(fact, ltre):
     #print('tryRules Fact => ', fact)
-    for rule in getCandidateRules(fact, tre):
+    for rule in getCandidateRules(fact, ltre):
         #printRule(rule)
-        tryRuleOn(rule, fact, tre)
+        tryRuleOn(rule, fact, ltre)
 
-def getCandidateRules(fact, tre):
+def getCandidateRules(fact, ltre):
     """
     Return lists of all applicable rules for a given fact
     :param fact:
-    :param tre:
+    :param ltre:
     :return:
     """
-    return getDbClass(fact, tre).rules
+    return getDbClass(fact, ltre).rules
 
-def tryRuleOn(rule, fact, tre):
+def tryRuleOn(rule, fact, ltre):
     """
     Try a single rule on a single fact
     If the trigger matches, queue it up
     :param rule:
     :param fact:
-    :param tre:
+    :param ltre:
     :return:
     """
     #print('tryRuleOn ====== ')
     #print('rule trigger => ', rule.trigger, ' fact => ', fact)
     #print('rule environment => ', rule.environment)
-    bindings = unify(fact, rule.trigger, rule.environment)
-    #print('bindings => ', bindings)
+    #print('rule len => ', rule.trigger)
+    #print('fact len => ', fact)
+
+    if len(rule.trigger) != len(fact):
+        return None
+    elif len(rule.trigger) > 1:
+        bindings = rule.environment
+        for idx in range(len(rule.trigger)):
+            #print('rule idx => ', rule.trigger[idx])
+            #print('fact idx => ', fact[idx])
+            #print(len(fact[idx]))
+            bindings = unify(fact[idx], rule.trigger[idx], bindings)
+    else:
+        bindings = unify(fact, rule.trigger, rule.environment)
+
+    #print('bindings ???? ', bindings)
 
     if bindings != None:
-        enqueue([rule.body, bindings], tre)
+        enqueue([rule.body, bindings], ltre)
 
-def runRules(tre):
+def runRules(ltre):
     counter = 0
-    while len(tre.queue) > 0:
-        rulePair = dequeue(tre)
+    while len(ltre.queue) > 0:
+        rulePair = dequeue(ltre)
         counter += 1
-        runRule(rulePair, tre)
+        runRule(rulePair, ltre)
 
-    if tre.debugging:
+    if ltre.debugging:
         print('Total', counter, 'rules run!')
 
 # It's a LIFO queue
-def enqueue(new, tre):
-    tre.queue.append(new)
+def enqueue(new, ltre):
+    ltre.queue.append(new)
 
-def dequeue(tre):
-    if len(tre.queue) > 0:
-        return tre.queue.pop()
+def dequeue(ltre):
+    if len(ltre.queue) > 0:
+        return ltre.queue.pop()
     else:
         return None
 
-def runRule(pair, tre):
+def runRule(pair, ltre):
     """
     Here pair is ([body], {bindings})
     :param pair:
-    :param tre:
+    :param ltre:
     :return:
     """
     myglobal._env_ = pair[1]
-    myglobal._tre_ = tre
+    myglobal._ltre_ = ltre
 
-    tre.rules_run += 1
+    ltre.rules_run += 1
 
     #print("======= run Rule Part =========")
     newBody = copy.deepcopy(pair[0])

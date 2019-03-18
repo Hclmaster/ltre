@@ -128,4 +128,5 @@ def eval(x, env=global_env):
 
 if __name__ == '__main__':
     #print(global_env)
+    print(parse("(begin (define r 10) (* pi (* r r)))"))
     print(eval(parse("(begin (define r 10) (* pi (* r r)))")))
