@@ -20,6 +20,7 @@
         <list>
           <option value="str" />
           <option value="dict" />
+          <option value="object" />
         </list>
       </option>
     </inspection_tool>

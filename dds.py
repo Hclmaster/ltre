@@ -1,4 +1,6 @@
 import warnings
+from lrules import *
+import copy
 
 def solveCryptarithmeticProblem():
     sendMoreMoney = [
@@ -47,17 +49,46 @@ def extractProblemLetters(problem):
 
     return letters
 
-def ddSearch(choiceSets):
-    if choiceSets == None:
+def ddSearch(choiceSets, level=0, stack=[[]]):
+    print('level ==> ', level)
+    if choiceSets == None or choiceSets == []:
         warnings.warn('DDS Found no solution!')
+        return
     choices = choiceSets[0]
 
     for choice in choices:
-        print('choice => ', choice)
+        if len(stack) >= level + 1:
+            if level == 0:
+                stack[level] = reformatPhrase(choice)
+            else:
+                stack[level] = copy.deepcopy(stack[level-1])
+                stack[level].append(reformatPhrase(choice))
+        else:
+            stack.append(reformatPhrase(choice))
 
+        # Not implemented yet!!!!
+        withContradictionHandler()
+
+        # if true, then ddsearch, otherwise, contradition!!!
+        print('ddSearch Stack => ', stack)
+        ddSearch(choiceSets[1:], level+1, stack)
+
+def withContradictionHandler():
+    pass
+
+
+#### Need to be modified!!! Because different phrase has different format!!!!!! ####
+def reformatPhrase(choice):
+    phrases = []
+    for attribute, object in choice.items():
+        return parse('('+attribute+' '+object+')')
 
 if __name__ == '__main__':
     #solveCryptarithmeticProblem()
 
-    choiceSets = solveCryptarithmeticProblem()
-    ddSearch(choiceSets)
+    #choiceSets = solveCryptarithmeticProblem()
+    #ddSearch(choiceSets)
+
+    ss = [[1,2,3]]
+    print(ss[1:]==[])
+    print(ss[1:]==None)

@@ -150,6 +150,7 @@ def tryRuleOn(rule, fact, ltre):
 
 def runRules(ltre):
     counter = 0
+    #print('runRules length ===> ', len(ltre.queue))
     while len(ltre.queue) > 0:
         rulePair = dequeue(ltre)
         counter += 1
@@ -181,6 +182,8 @@ def runRule(pair, ltre):
     ltre.rules_run += 1
 
     #print("======= run Rule Part =========")
+    #print('body ===> ', pair[0])
+    #print('bindings => ', pair[1])
     newBody = copy.deepcopy(pair[0])
 
     for item in newBody:
