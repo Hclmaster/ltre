@@ -8,11 +8,12 @@ myglobal._lenv_ = None
 
 class DbClass(object):
 
-    def __init__(self, name=None, ltre=None, facts=[], rules=[]):
+    def __init__(self, name=None, ltre=None, facts=[], rules=[], notFacts=[]):
         self.name = name
         self.ltre = ltre
         self.facts = facts
         self.rules = rules
+        self.notFacts = notFacts
 
 def showData():
     """
@@ -36,7 +37,7 @@ def getDbClass(fact, ltre):
         if dbclass != None:
             return dbclass
         else:
-            dbclass = DbClass(name=fact, ltre=ltre, facts=[], rules=[])
+            dbclass = DbClass(name=fact, ltre=ltre, facts=[], rules=[], notFacts=[])
             ltre.dbclassTable[fact] = dbclass
             return dbclass
 
@@ -53,6 +54,14 @@ def getCandidates(pattern, ltre):
 def assertFact(fact, ltre=None):
     if ltre == None:
         ltre = myglobal._ltre_
+
+    #print('assertFact fact = ', fact)
+
+    #### Store the False facts explicitly (like false node)
+    if fact[0] == ':not':
+        if insertNoGoodFact(fact[1:][0], ltre) == True:
+            rules.tryRules(fact, ltre)
+
     if insertFact(fact, ltre) == True:     # When it isn't already there
         rules.tryRules(fact, ltre)               # run the rules on it
 
@@ -68,6 +77,21 @@ def insertFact(fact, ltre):
         if ltre.debugging:
             print(ltre, 'Inserting',fact,'into database.')
         dbclass.facts.append(fact)
+        return True
+    return False
+
+def insertNoGoodFact(nogoodfact, ltre):
+    """
+    Insert a single not fact into the database
+    :param nogoodfact:
+    :param ltre:
+    :return:
+    """
+    dbclass = getDbClass(nogoodfact, ltre)
+    if nogoodfact not in dbclass.notFacts:
+        if ltre.debugging:
+            print(ltre, 'Inserting',nogoodfact,'into database.')
+        dbclass.notFacts.append(nogoodfact)
         return True
     return False
 

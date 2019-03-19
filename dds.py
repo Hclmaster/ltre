@@ -50,31 +50,52 @@ def extractProblemLetters(problem):
     return letters
 
 def ddSearch(choiceSets, level=0, stack=[[]]):
-    print('level ==> ', level)
+    #print('level ==> ', level)
     if choiceSets == None or choiceSets == []:
-        warnings.warn('DDS Found no solution!')
+        #print('***********************************************************')
+        #print('A feasible ddsearch solution is:')
+        #print('level =', level, ' stack =', stack[level-1])
         return
     choices = choiceSets[0]
 
     for choice in choices:
         if len(stack) >= level + 1:
             if level == 0:
-                stack[level] = reformatPhrase(choice)
+                stack[level] = []
+                stack[level].append(reformatPhrase(choice))
             else:
                 stack[level] = copy.deepcopy(stack[level-1])
                 stack[level].append(reformatPhrase(choice))
         else:
-            stack.append(reformatPhrase(choice))
-
-        # Not implemented yet!!!!
-        withContradictionHandler()
+            stack.append([])
+            stack[level] = copy.deepcopy(stack[level-1])
+            stack[level].append(reformatPhrase(choice))
 
         # if true, then ddsearch, otherwise, contradition!!!
-        print('ddSearch Stack => ', stack)
-        ddSearch(choiceSets[1:], level+1, stack)
+        if withContradictionHandler(level, stack[level]) == True:
+            ddSearch(choiceSets[1:], level+1, stack)
 
-def withContradictionHandler():
-    pass
+def withContradictionHandler(level, stack):
+    #print('level = ', level, ' stack = ', stack)
+    flag = 0
+
+    for lst in stack:
+        dbclass = getDbClass(lst[0], myglobal._ltre_)
+        for nogoodfact in dbclass.notFacts:
+            bindings = unify(lst, nogoodfact)
+            if bindings != None:
+                print('=================================================')
+                print('Making Contradition!!!!!!')
+                print('level = ', level, ' stack = ', stack)
+                tmp = [':not']
+                tmp.append(nogoodfact)
+                print('Assumption:', lst, ' Facts: ', tmp)
+                flag = 1
+                break
+        if flag:
+            break
+
+    return True if flag == 0 else False
 
 
 #### Need to be modified!!! Because different phrase has different format!!!!!! ####
@@ -83,12 +104,15 @@ def reformatPhrase(choice):
     for attribute, object in choice.items():
         return parse('('+attribute+' '+object+')')
 
+
+
 if __name__ == '__main__':
     #solveCryptarithmeticProblem()
 
     #choiceSets = solveCryptarithmeticProblem()
     #ddSearch(choiceSets)
 
-    ss = [[1,2,3]]
-    print(ss[1:]==[])
-    print(ss[1:]==None)
+    ss = [['a','b','c']]
+    ss[0] = []
+    ss[0].append([1,2,3])
+    print(ss)

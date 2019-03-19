@@ -86,17 +86,17 @@ def freeInVar(var, exp, bindings):
         return None
 
 if __name__ == '__main__':
-    """
+
     # Test case #1 - expects None (Fail)
     pat = '?x'
     obj = ['a', '?x']
     print(unify(pat, obj))
-
+    """
     # Test case #2 - expects {'?x': ['a', 'b']}
     pat = '?x'
     obj = ['a', 'b']
     print(unify(pat, obj))
-    """
+    
 
     #pat = ['?y', '?x']
     #obj = ['a', 'b']
@@ -104,3 +104,4 @@ if __name__ == '__main__':
 
     print(Symbol(0))
     print(isVariable(0))
+    """

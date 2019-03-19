@@ -36,21 +36,30 @@ def ex1 (debugging = False):
              '(rule ((:not (?attribute1 ?attribute2)) (?attribute1 ?obj) (?attribute2 ?obj)) (rassert! (:not (:and (:not (?attribute1 ?attribute2)) (?attribute1 ?obj) (?attribute2 ?obj)))))']
     runForms(myglobal._ltre_, forms)
 
+    # ddSearch & making Choice Sets
+    choiceSets = makeAttributeChoiceSets(_attributes_, _objects_)
+    #print(choiceSets)
+    ddSearch(choiceSets)
+
+    # ============ Test for get not dbclass facts
+    #dbclass = getDbClass('plays-piano', myglobal._ltre_)
+    #for data in dbclass.notFacts:
+    #    print(data)
+
 
 
 if __name__ == '__main__':
-    """
+
     ex1()
 
-    makeAttributeChoiceSets(_attributes_, _objects_)
-
-    print('======== Show Rules ========')
-    showRules()
-    print('======== Show Facts ========')
-    showData()
+    #print('======== Show Rules ========')
+    #showRules()
+    #print('======== Show Facts ========')
+    #showData()
 
     """
     # Test dds
     choiceSets = makeAttributeChoiceSets(_attributes_, _objects_)
     print('choiceSets ====> ', choiceSets)
     ddSearch(choiceSets)
+    """
