@@ -1,6 +1,7 @@
 import myglobal
 from ltinter import *
 import lrules as rules
+from lunify import *
 import warnings
 
 Symbol = str    # A Lisp Symbol is implemented as a Python str
@@ -67,8 +68,16 @@ def getCandidates(pattern, ltre):
             facts.append([])
 
         for item in dbclass.name:
-            for fact in getDbClass(item, ltre).facts:
-                facts[idx].append(fact)
+            # if it starts with '?', then retrieve all the facts,
+            # because we don't know which one to match
+            if isVariable(item):
+                for key, dbclass in myglobal._ltre_.dbclassTable.items():
+                    for datum in dbclass.facts:
+                        facts[idx].append(datum)
+
+            else:
+                for fact in getDbClass(item, ltre).facts:
+                    facts[idx].append(fact)
             idx += 1
 
         return facts

@@ -77,6 +77,8 @@ def atom(token: str):
 
 #### eval
 def eval(x, env=global_env):
+    if x == None:
+        return
     # all values in the parse result list are symbol!
     if x[0] == Symbol('rule'):
         addRule(x[1], x[2:])
@@ -111,11 +113,12 @@ def addRule(trigger, body):
     dbclass.rules.append(rule)
     rule.dbclass = dbclass
     #print("====== debugging the ltre with New Rule =======")
+    #print('get candidates => ', getCandidates(trigger, myglobal._ltre_))
     #printRule(rule)
 
     # Go into the database and see what it might trigger on
 
-    print('candidates', getCandidates(trigger, myglobal._ltre_))
+    #print('candidates', getCandidates(trigger, myglobal._ltre_))
 
     #for candidate in getCandidates(trigger, myglobal._ltre_):
         #tryRuleOn(rule, candidate, myglobal._ltre_)
@@ -124,7 +127,7 @@ def addRule(trigger, body):
 
 
 def constructCandidates(candidates, rule, idx, level, ans=[]):
-    #print('is it here????')
+    # like using dfs to construct the whole candidats facts within a list (list of lists)
     if idx == level:
         tryRuleOn(rule, ans, myglobal._ltre_)
         return
@@ -175,7 +178,11 @@ def tryRuleOn(rule, fact, ltre):
     if len(rule.trigger) != len(fact):
         return None
     else:
-        bindings = unify(fact, rule.trigger, rule.environment)
+        #print('fact => ', fact)
+        #print('rule trigger => ', rule.trigger)
+        #print('rule environment => ', rule.environment)
+        ##### it seems that we have to clear the environment???
+        bindings = unify(fact, rule.trigger, {})
 
     #print('bindings ???? ', bindings)
 

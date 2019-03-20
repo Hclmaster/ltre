@@ -36,9 +36,24 @@ def ex1 (debugging = False):
              '(rule ((:not (?attribute1 ?attribute2)) (?attribute1 ?obj) (?attribute2 ?obj)) (rassert! (:not (:and (:not (?attribute1 ?attribute2)) (?attribute1 ?obj) (?attribute2 ?obj)))))']
 
     forms = [
-        '(rassert! (plays-piano sam))',
-        '(rassert! (plays-harp sam))',
-        '(rule ((plays-piano ?a) (plays-harp ?b)) (when (eql ?a ?b) (rassert! (:not (:and (plays-piano ?a) (plays-harp ?b))))))'
+        '(rassert! (plays-piano sally))',
+        '(rassert! (plays-harp sally))',
+        '(rule ((plays-piano ?a) (plays-harp ?b)) (when (eql ?a ?b) (rassert! (:not (:and (plays-piano ?a) (plays-harp ?b))))))']
+
+    #runForms(myglobal._ltre_, forms)
+
+    forms = [
+        '(rule ((plays-piano ?a) (plays-harp ?b)) (when (eql ?a ?b) (rassert! (:not (:and (plays-piano ?a) (plays-harp ?b))))))',
+        '(rule ((plays-piano ?a) (smooth-talker ?b)) (when (eql ?a ?b) (rassert! (:not (:and (plays-piano ?a) (smooth-talker ?b))))))',
+        '(rule ((plays-harp ?a) (smooth-talker ?b)) (when (eql ?a ?b) (rassert! (:not (:and (plays-harp ?a) (smooth-talker ?b))))))',
+        '(rule ((likes-money ?a) (likes-gambling ?b)) (when (eql ?a ?b) (rassert! (:not (:and (likes-money ?a) (likes-gambling ?b))))))',
+        '(rule ((likes-gambling ?a) (likes-animals ?b)) (when (eql ?a ?b) (rassert! (:not (:and (likes-gambling ?a) (likes-animals ?b))))))',
+        '(rule ((smooth-talker ?a) (likes-gambling ?b)) (when (eql ?a ?b) (rassert! (:not (:and (smooth-talker ?a) (likes-gambling ?b))))))',
+        '(rassert! (same-entity likes-animals plays-harp))',
+        '(rassert! (:not (likes-animals groucho)))',
+        '(rassert! (:not (smooth-talker harpo)))',
+        '(rassert! (plays-piano chico))',
+        '(rule ((same-entity ?a1 ?a2) (?a1 ?obj)) (rassert! (:implies (:and (same-entity ?a1 ?a2) (?a1 ?obj)) (?a2 ?obj))))'
     ]
 
     runForms(myglobal._ltre_, forms)
