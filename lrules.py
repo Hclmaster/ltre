@@ -114,9 +114,25 @@ def addRule(trigger, body):
     #printRule(rule)
 
     # Go into the database and see what it might trigger on
-    for candidate in getCandidates(trigger, myglobal._ltre_):
-        tryRuleOn(rule, candidate, myglobal._ltre_)
 
+    print('candidates', getCandidates(trigger, myglobal._ltre_))
+
+    #for candidate in getCandidates(trigger, myglobal._ltre_):
+        #tryRuleOn(rule, candidate, myglobal._ltre_)
+
+    constructCandidates(getCandidates(trigger, myglobal._ltre_), rule, 0, len(trigger))
+
+
+def constructCandidates(candidates, rule, idx, level, ans=[]):
+    #print('is it here????')
+    if idx == level:
+        tryRuleOn(rule, ans, myglobal._ltre_)
+        return
+
+    for candidate in candidates[idx]:
+        ans.append(candidate)
+        constructCandidates(candidates, rule, idx+1, level, ans)
+        ans.pop()
 
 def printRule(rule):
     """
@@ -158,13 +174,6 @@ def tryRuleOn(rule, fact, ltre):
 
     if len(rule.trigger) != len(fact):
         return None
-    elif len(rule.trigger) > 1:
-        bindings = rule.environment
-        for idx in range(len(rule.trigger)):
-            #print('rule idx => ', rule.trigger[idx])
-            #print('fact idx => ', fact[idx])
-            #print(len(fact[idx]))
-            bindings = unify(fact[idx], rule.trigger[idx], bindings)
     else:
         bindings = unify(fact, rule.trigger, rule.environment)
 
@@ -211,15 +220,19 @@ def runRule(pair, ltre):
     #print('bindings => ', pair[1])
     newBody = copy.deepcopy(pair[0])
 
-    for item in newBody:
-        for key, value in pair[1].items():
-            if key in item:
-                item[item.index(key)] = value
-
-    #print('pair => ', pair)
-    #print('newBody => ', newBody)
+    newBody[0] = bindVar(newBody[0], pair[1])
+    #print('newnewnew body => ', newBody[0])
     eval(newBody[0])
 
+def bindVar(lst, bindings):
+    for item in lst:
+        for key, value in bindings.items():
+            if key in item:
+                item[item.index(key)] = value
+        if any(isinstance(item, list) for i in item):
+            item = bindVar(item, bindings)
+
+    return lst
 
 if __name__ == '__main__':
     forms = ['(rule (implies ?ante ?conse) (rule ?ante (assert! ?conse)))',

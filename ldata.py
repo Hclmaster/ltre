@@ -55,17 +55,25 @@ def getCandidates(pattern, ltre):
     :param ltre:
     :return:
     """
-    print('pattern => ', pattern)
-    print('getDbclass => ', getDbClass(pattern, ltre).name)
+    #print('pattern => ', pattern)
+    #print('getDbclass => ', getDbClass(pattern, ltre).name)
 
     dbclass = getDbClass(pattern, ltre)
 
     facts = []
     if isinstance(dbclass.name, tuple):
+        idx = 0
+        for item in dbclass.name:
+            facts.append([])
+
         for item in dbclass.name:
             for fact in getDbClass(item, ltre).facts:
-                facts.append([fact])
-    return getDbClass(pattern, ltre).facts
+                facts[idx].append(fact)
+            idx += 1
+
+        return facts
+    else:
+        return getDbClass(pattern, ltre).facts
 
 # Installing new facts
 def assertFact(fact, ltre=None):

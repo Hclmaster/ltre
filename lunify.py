@@ -88,8 +88,8 @@ def freeInVar(var, exp, bindings):
 if __name__ == '__main__':
 
     # Test case #1 - expects None (Fail)
-    pat = '?x'
-    obj = ['a', '?x']
+    pat = [['plays-piano', '?a'], ['plays-harp', '?b']]
+    obj = [['plays-piano', 'sam'], ['plays-harp', 'sam']]
     print(unify(pat, obj))
     """
     # Test case #2 - expects {'?x': ['a', 'b']}

@@ -125,6 +125,16 @@ def eval(x, env=global_env):
         args = [eval(exp, env) for exp in x[1:]]
         return proc(*args)
 
+def bindVar(lst, bindings):
+    for item in lst:
+        for key, value in bindings.items():
+            if key in item:
+                item[item.index(key)] = value
+        if any(isinstance(item, list) for i in item):
+            item = bindVar(item, bindings)
+
+    return lst
+
 
 if __name__ == '__main__':
     #print(global_env)
@@ -132,4 +142,12 @@ if __name__ == '__main__':
     #print(eval(parse("(if (> 10 20) (+ 1 1) (+ 3 3))")))
     #print(eval(parse("(eq? 1 1)")))
 
-    lst = []
+    bindings = {'?a': 'sam', '?b': 'sam'}
+    lst = ['when', ['eql', '?a', '?b'], ['rassert!', [':not', [':and', ['plays-piano', '?a'], ['plays-harp', '?b']]]]]
+
+    print(bindVar(lst, bindings))
+
+    aa = ['rassert!', [':not', [':and', ['plays-piano', '?a'], ['plays-harp', '?b']]]]
+    ff = 'when'
+    print(any(isinstance(i, list) for i in ff))
+    print(any(isinstance(i, list) for i in aa))
