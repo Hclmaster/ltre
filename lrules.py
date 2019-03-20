@@ -3,8 +3,10 @@ from ltinter import *
 from ldata import *
 from lunify import *
 import copy
+import operator as op
 
 Symbol = str    # A Lisp Symbol is implemented as a Python str
+List   = list   # A Lisp List   is implemented as a Python list
 
 class Rule(object):
 
@@ -17,12 +19,20 @@ class Rule(object):
         self.environment = environment
         self.label = label
 
+################ Global Environment
+
 def standard_env():
-    """
-    An environment with some Lisp standard procedure
-    :return:
-    """
-    pass
+    "An environment with some Lisp standard procedures."
+    env = {}
+    env.update({
+        'mod':op.mod,
+        '+':op.add, '-':op.sub, '*':op.mul, '/':op.truediv,
+        '>':op.gt, '<':op.lt, '>=':op.ge, '<=':op.le, '=':op.eq,
+        'eql':op.eq
+    })
+    return env
+
+global_env = standard_env()
 
 
 def showRules():
@@ -66,7 +76,7 @@ def atom(token: str):
             return Symbol(token)
 
 #### eval
-def eval(x):
+def eval(x, env=global_env):
     # all values in the parse result list are symbol!
     if x[0] == Symbol('rule'):
         addRule(x[1], x[2:])
@@ -74,6 +84,21 @@ def eval(x):
         assertFact(x[1:][0])
     elif x[0] == Symbol('rassert!'):
         assertFact(x[1:][0])
+    elif isinstance(x, Symbol):      # variable reference
+        if x in env:
+            return env[x]
+        else:
+            return x
+    elif not isinstance(x, List):  # constant literal
+        return x
+    elif x[0] == 'when':
+        (_, test, conseq) = x
+        exp = (conseq if eval(test, env) else None)
+        return eval(exp, env)
+    else:                          # (proc arg...)
+        proc = eval(x[0], env)
+        args = [eval(exp, env) for exp in x[1:]]
+        return proc(*args)
 
 def addRule(trigger, body):
     # First build the struct

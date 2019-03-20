@@ -19,31 +19,11 @@ class Procedure(object):
 def standard_env():
     "An environment with some Scheme standard procedures."
     env = {}
-    env.update(vars(math)) # sin, cos, sqrt, pi, ...
     env.update({
+        'mod':op.mod,
         '+':op.add, '-':op.sub, '*':op.mul, '/':op.truediv,
         '>':op.gt, '<':op.lt, '>=':op.ge, '<=':op.le, '=':op.eq,
-        'abs':     abs,
-        'append':  op.add,
-        'apply':   lambda proc, args: proc(*args),
-        'begin':   lambda *x: x[-1],
-        'car':     lambda x: x[0],
-        'cdr':     lambda x: x[1:],
-        'cons':    lambda x,y: [x] + y,
-        'eq?':     op.is_,
-        'equal?':  op.eq,
-        'length':  len,
-        'list':    lambda *x: list(x),
-        'list?':   lambda x: isinstance(x,list),
-        'map':     lambda *args: list(map(*args)),
-        'max':     max,
-        'min':     min,
-        'not':     op.not_,
-        'null?':   lambda x: x == [],
-        'number?': lambda x: isinstance(x, Number),
-        'procedure?': callable,
-        'round':   round,
-        'symbol?': lambda x: isinstance(x, Symbol),
+        'eql':op.eq
     })
     return env
 
@@ -104,22 +84,20 @@ def lispstr(exp):
 def eval(x, env=global_env):
     "Evaluate an expression in an environment."
     if isinstance(x, Symbol):      # variable reference
-        return env[x]
+        if x in env:
+            return env[x]
+        else:
+            return x
     elif not isinstance(x, List):  # constant literal
         return x
-    elif x[0] == 'quote':          # (quote exp)
-        (_, exp) = x
-        return exp
     elif x[0] == 'if':             # (if test conseq alt)
         (_, test, conseq, alt) = x
         exp = (conseq if eval(test, env) else alt)
         return eval(exp, env)
-    elif x[0] == 'define':         # (define var exp)
-        (_, var, exp) = x
-        env[var] = eval(exp, env)
-    elif x[0] == 'lambda':         # (lambda (var...) body)
-        (_, parms, body) = x
-        return Procedure(parms, body, env)
+    elif x[0] == 'when':
+        (_, test, conseq) = x
+        exp = (conseq if eval(test, env) else None)
+        return eval(exp, env)
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]
@@ -128,8 +106,6 @@ def eval(x, env=global_env):
 
 if __name__ == '__main__':
     #print(global_env)
-    #print(parse("(begin (define r 10) (* pi (* r r)))"))
+    print(parse("(when (eql sam sam) (* pi (* 3 3)))"))
+    print(eval(parse("(when (eql sam sam) (* 4 (* 3 3)))")))
     #print(eval(parse("(if (> 10 20) (+ 1 1) (+ 3 3))")))
-    #print(eval(parse("(eq? 1 1)")))
-
-    lst = []

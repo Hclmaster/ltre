@@ -27,12 +27,19 @@ def showData():
             print("Fact #", counter, "=>", datum)
     return counter
 
-def getDbClass(fact, ltre):
+def getDbClass(fact, ltre, flag=0):
     if fact == None:
         warnings.warn("nil can't be a dbclass!")
-    elif isinstance(fact, list):
-        return getDbClass(fact[0], ltre)
-    elif isinstance(fact, Symbol):
+    elif isinstance(fact, list) and (not isinstance(fact[0], list)) and flag == 0:
+        return getDbClass(fact[0], ltre, flag)
+    elif len(fact) > 1 and isinstance(fact[0], list):
+        tmpLst = []
+        flag = 1    # means need to construct tuple used as dbclass name
+        # assume that only will appear secondary level list
+        for lst in fact:
+            tmpLst.append(lst[0])
+        return getDbClass(tuple(tmpLst), ltre, flag)
+    else:
         dbclass = ltre.dbclassTable[fact] if fact in ltre.dbclassTable else None
         if dbclass != None:
             return dbclass
@@ -48,6 +55,16 @@ def getCandidates(pattern, ltre):
     :param ltre:
     :return:
     """
+    print('pattern => ', pattern)
+    print('getDbclass => ', getDbClass(pattern, ltre).name)
+
+    dbclass = getDbClass(pattern, ltre)
+
+    facts = []
+    if isinstance(dbclass.name, tuple):
+        for item in dbclass.name:
+            for fact in getDbClass(item, ltre).facts:
+                facts.append([fact])
     return getDbClass(pattern, ltre).facts
 
 # Installing new facts
