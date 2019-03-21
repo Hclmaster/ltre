@@ -56,7 +56,7 @@ def extractProblemLetters(problem):
 
 global tmpEnv
 
-def ddSearch(choiceSets, level=0, stack=[[]], ltre=[]):
+def ddSearch(choiceSets, level=0, stack=[[]], ltre=[], debugging=False):
     #print('level ==> ', level)
     if choiceSets == None or choiceSets == []:
         print('***********************************************************')
@@ -83,12 +83,12 @@ def ddSearch(choiceSets, level=0, stack=[[]], ltre=[]):
             ltre.append(copy.deepcopy(ltre[level-1]))
 
         # if true, then ddsearch, otherwise, contradition!!!
-        if checkContradictionAssumptions(level, stack[level], ltre[level]) == False\
-                and withContradictionHandler(level, stack[level], ltre[level]) == False:
-            ddSearch(choiceSets[1:], level+1, stack, ltre)
+        if checkContradictionAssumptions(level, stack[level], ltre[level], debugging) == False\
+                and withContradictionHandler(level, stack[level], ltre[level], debugging) == False:
+            ddSearch(choiceSets[1:], level+1, stack, ltre, debugging)
 
 
-def withContradictionHandler(level, stack, ltre):
+def withContradictionHandler(level, stack, ltre, debugging=False):
     for assumption in stack:
         tmpEnv = ltre
         #print('assumption => ', assumption)
@@ -96,13 +96,13 @@ def withContradictionHandler(level, stack, ltre):
         assertFact(assumption, tmpEnv)
         runRules(tmpEnv)
 
-        if checkContradictionAssumptions(level, stack, ltre) == True:
+        if checkContradictionAssumptions(level, stack, ltre, debugging) == True:
             return True
 
     return False
 
 
-def checkContradictionAssumptions(level, stack, ltre):
+def checkContradictionAssumptions(level, stack, ltre, debugging=False):
     #print('level =', level, 'stack =', stack)
 
     dbclass = getDbClass(':not', ltre)
@@ -113,17 +113,21 @@ def checkContradictionAssumptions(level, stack, ltre):
         #print('nogoodfact => ', nogoodfacts[1:][0])
 
         if isinstance(nogoodfacts[1:][0][0], list):
+            tmpflag = False
             for nogoodfact in nogoodfacts[1:][0]:
-                if nogoodfact in stack:
-                    flag = True
-                    #printContradictionInfo(level, stack, nogoodfact)
+                if nogoodfact not in stack:
+                    tmpflag = True
                     break
+            if tmpflag == False:
+                flag = True
+                if debugging:
+                    printContradictionInfo(level, stack, nogoodfacts[1:][0])
         else:
             nogoodfact = nogoodfacts[1:][0]
             if nogoodfact in stack:
                 flag = True
-                #printContradictionInfo(level, stack, nogoodfact)
-                break
+                if debugging:
+                    printContradictionInfo(level, stack, nogoodfact)
 
         if flag == True:
             break
