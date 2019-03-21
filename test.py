@@ -142,6 +142,7 @@ if __name__ == '__main__':
     #print(eval(parse("(if (> 10 20) (+ 1 1) (+ 3 3))")))
     #print(eval(parse("(eq? 1 1)")))
 
+    """
     bindings = {'?a': 'sam', '?b': 'sam'}
     lst = ['when', ['eql', '?a', '?b'], ['rassert!', [':not', [':and', ['plays-piano', '?a'], ['plays-harp', '?b']]]]]
 
@@ -151,3 +152,7 @@ if __name__ == '__main__':
     ff = 'when'
     print(any(isinstance(i, list) for i in ff))
     print(any(isinstance(i, list) for i in aa))
+    """
+
+    t = ('same-entity', '?a1')
+    print('same-entity' in t)

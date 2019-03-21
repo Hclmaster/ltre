@@ -53,7 +53,8 @@ def ex1 (debugging = False):
         '(rassert! (:not (likes-animals groucho)))',
         '(rassert! (:not (smooth-talker harpo)))',
         '(rassert! (plays-piano chico))',
-        '(rule ((same-entity ?a1 ?a2) (?a1 ?obj)) (rassert! (:implies (:and (same-entity ?a1 ?a2) (?a1 ?obj)) (?a2 ?obj))))'
+        '(rule ((same-entity ?a1 ?a2) (?a1 ?obj)) (rassert! (:implies (:and (same-entity ?a1 ?a2) (?a1 ?obj)) (?a2 ?obj))))',
+        '(rassert! (likes-animals chico))',
     ]
 
     runForms(myglobal._ltre_, forms)

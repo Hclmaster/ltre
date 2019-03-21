@@ -105,3 +105,7 @@ if __name__ == '__main__':
     print(Symbol(0))
     print(isVariable(0))
     """
+
+
+    a1 = ('a', 'b', '?x')
+    print(any(isVariable(a) for a in a1))

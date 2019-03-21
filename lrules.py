@@ -42,6 +42,8 @@ def showRules():
     """
     counter = 0
     for key,dbclass in myglobal._ltre_.dbclassTable.items():
+        #print('dbclass name => ', dbclass.name)
+        #print('dbclass rules => ', dbclass.rules)
         for rule in dbclass.rules:
             counter += 1
             printRule(rule)
@@ -146,10 +148,16 @@ def printRule(rule):
     print("Rule #", rule.counter, rule.trigger, rule.body)
 
 def tryRules(fact, ltre):
-    #print('tryRules Fact => ', fact)
+    #### Used for testing
+    if fact == ['likes-animals', 'chico']:
+        #print('tryRules Fact => ', fact)
+        #print('getCandidateRules => ', getCandidateRules(fact, ltre))
+        pass
+
     for rule in getCandidateRules(fact, ltre):
         #printRule(rule)
-        tryRuleOn(rule, fact, ltre)
+        #tryRuleOn(rule, fact, ltre)
+        constructCandidates(getCandidates(rule.trigger, myglobal._ltre_), rule, 0, len(rule.trigger))
 
 def getCandidateRules(fact, ltre):
     """
@@ -158,7 +166,20 @@ def getCandidateRules(fact, ltre):
     :param ltre:
     :return:
     """
-    return getDbClass(fact, ltre).rules
+
+    ### store all the rules that this fact might trigger
+    rules = []
+
+    for key,dbclass in myglobal._ltre_.dbclassTable.items():
+        #print('dbclass name => ', dbclass.name)
+        if dbclass.rules != [] and (fact[0] in dbclass.name or any(isVariable(x) for x in dbclass.name))\
+                and fact == ['likes-animals', 'chico']:
+            for rule in dbclass.rules:
+                rules.append(rule)
+                #print('rules???')
+                #printRule(rule)
+
+    return rules
 
 def tryRuleOn(rule, fact, ltre):
     """
