@@ -42,6 +42,8 @@ def ex1 (debugging = False):
 
     #runForms(myglobal._ltre_, forms)
 
+
+    ### These rules and facts are the finally ones!!!
     forms = [
         '(rule ((plays-piano ?a) (plays-harp ?b)) (when (eql ?a ?b) (rassert! (:not ((plays-piano ?a) (plays-harp ?b))))))',
         '(rule ((plays-piano ?a) (smooth-talker ?b)) (when (eql ?a ?b) (rassert! (:not ((plays-piano ?a) (smooth-talker ?b))))))',
@@ -61,7 +63,7 @@ def ex1 (debugging = False):
 
     # ddSearch & making Choice Sets
     choiceSets = makeAttributeChoiceSets(_attributes_, _objects_)
-    print(choiceSets)
+    #print(choiceSets)
     ddSearch(choiceSets)
 
     # ============ Test for get not dbclass facts
@@ -70,41 +72,32 @@ def ex1 (debugging = False):
     #    print(data)
 
 
-def showNotData():
+def repl(prompt='ltre.py> '):
     """
-    Print out whole facts
-    :return: counter
+    A prompt-read-eval-print loop.
+    :param prompt:
+    :return:
     """
-    counter = 0
-    for key,dbclass in myglobal._ltre_.dbclassTable.items():
-        for datum in dbclass.notFacts:
-            counter += 1
-            print("NotFact #", counter, "=>", datum)
-    return counter
+    while True:
+        val = input(prompt)
+        if val == 'ex1()':
+            ex1()
+        elif val == 'ex1(True)':
+            ex1(True)
+        elif val == 'showRules()':
+            showRules()
+        elif val == 'showData()':
+            showData()
 
-def checkContradictionAssumptions():
-    dbclass = getDbClass(':not', myglobal._ltre_)
-    for nogoodfact in dbclass.facts:
-        print('nogoodfact => ', nogoodfact[1:][0])
+
 
 if __name__ == '__main__':
 
-    ex1()
+    #ex1()
 
     #print('======== Show Rules ========')
-    showRules()
+    #showRules()
     #print('======== Show Facts ========')
-    showData()
+    #showData()
 
-    #print('num => ', myglobal.num)
-
-    #showNotData()
-
-    #checkContradictionAssumptions()
-
-    """
-    # Test dds
-    choiceSets = makeAttributeChoiceSets(_attributes_, _objects_)
-    print('choiceSets ====> ', choiceSets)
-    ddSearch(choiceSets)
-    """
+    repl()
