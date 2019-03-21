@@ -43,26 +43,26 @@ def ex1 (debugging = False):
     #runForms(myglobal._ltre_, forms)
 
     forms = [
-        '(rule ((plays-piano ?a) (plays-harp ?b)) (when (eql ?a ?b) (rassert! (:not (:and (plays-piano ?a) (plays-harp ?b))))))',
-        '(rule ((plays-piano ?a) (smooth-talker ?b)) (when (eql ?a ?b) (rassert! (:not (:and (plays-piano ?a) (smooth-talker ?b))))))',
-        '(rule ((plays-harp ?a) (smooth-talker ?b)) (when (eql ?a ?b) (rassert! (:not (:and (plays-harp ?a) (smooth-talker ?b))))))',
-        '(rule ((likes-money ?a) (likes-gambling ?b)) (when (eql ?a ?b) (rassert! (:not (:and (likes-money ?a) (likes-gambling ?b))))))',
-        '(rule ((likes-gambling ?a) (likes-animals ?b)) (when (eql ?a ?b) (rassert! (:not (:and (likes-gambling ?a) (likes-animals ?b))))))',
-        '(rule ((smooth-talker ?a) (likes-gambling ?b)) (when (eql ?a ?b) (rassert! (:not (:and (smooth-talker ?a) (likes-gambling ?b))))))',
+        '(rule ((plays-piano ?a) (plays-harp ?b)) (when (eql ?a ?b) (rassert! (:not ((plays-piano ?a) (plays-harp ?b))))))',
+        '(rule ((plays-piano ?a) (smooth-talker ?b)) (when (eql ?a ?b) (rassert! (:not ((plays-piano ?a) (smooth-talker ?b))))))',
+        '(rule ((plays-harp ?a) (smooth-talker ?b)) (when (eql ?a ?b) (rassert! (:not ((plays-harp ?a) (smooth-talker ?b))))))',
+        '(rule ((likes-money ?a) (likes-gambling ?b)) (when (eql ?a ?b) (rassert! (:not ((likes-money ?a) (likes-gambling ?b))))))',
+        '(rule ((likes-gambling ?a) (likes-animals ?b)) (when (eql ?a ?b) (rassert! (:not ((likes-gambling ?a) (likes-animals ?b))))))',
+        '(rule ((smooth-talker ?a) (likes-gambling ?b)) (when (eql ?a ?b) (rassert! (:not ((smooth-talker ?a) (likes-gambling ?b))))))',
         '(rassert! (same-entity likes-animals plays-harp))',
         '(rassert! (:not (likes-animals groucho)))',
         '(rassert! (:not (smooth-talker harpo)))',
         '(rassert! (plays-piano chico))',
-        '(rule ((same-entity ?a1 ?a2) (?a1 ?obj)) (rassert! (:implies (:and (same-entity ?a1 ?a2) (?a1 ?obj)) (?a2 ?obj))))',
+        '(rule ((same-entity ?a1 ?a2) (?a1 ?obj)) (rassert! (:implies ((same-entity ?a1 ?a2) (?a1 ?obj)) (?a2 ?obj))))',
         '(rassert! (likes-animals chico))',
     ]
 
     runForms(myglobal._ltre_, forms)
 
     # ddSearch & making Choice Sets
-    #choiceSets = makeAttributeChoiceSets(_attributes_, _objects_)
-    #print(choiceSets)
-    #ddSearch(choiceSets)
+    choiceSets = makeAttributeChoiceSets(_attributes_, _objects_)
+    print(choiceSets)
+    ddSearch(choiceSets)
 
     # ============ Test for get not dbclass facts
     #dbclass = getDbClass('plays-piano', myglobal._ltre_)
@@ -70,6 +70,22 @@ def ex1 (debugging = False):
     #    print(data)
 
 
+def showNotData():
+    """
+    Print out whole facts
+    :return: counter
+    """
+    counter = 0
+    for key,dbclass in myglobal._ltre_.dbclassTable.items():
+        for datum in dbclass.notFacts:
+            counter += 1
+            print("NotFact #", counter, "=>", datum)
+    return counter
+
+def checkContradictionAssumptions():
+    dbclass = getDbClass(':not', myglobal._ltre_)
+    for nogoodfact in dbclass.facts:
+        print('nogoodfact => ', nogoodfact[1:][0])
 
 if __name__ == '__main__':
 
@@ -79,6 +95,10 @@ if __name__ == '__main__':
     showRules()
     #print('======== Show Facts ========')
     showData()
+
+    #showNotData()
+
+    #checkContradictionAssumptions()
 
     """
     # Test dds

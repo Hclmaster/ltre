@@ -49,6 +49,7 @@ def extractProblemLetters(problem):
 
     return letters
 
+# ================= Useless above ============================
 def ddSearch(choiceSets, level=0, stack=[[]]):
     #print('level ==> ', level)
     if choiceSets == None or choiceSets == []:
@@ -72,30 +73,46 @@ def ddSearch(choiceSets, level=0, stack=[[]]):
             stack[level].append(reformatPhrase(choice))
 
         # if true, then ddsearch, otherwise, contradition!!!
-        if withContradictionHandler(level, stack[level]) == True:
+        if checkContradictionAssumptions(level, stack[level]) == False:
             ddSearch(choiceSets[1:], level+1, stack)
 
-def withContradictionHandler(level, stack):
-    #print('level = ', level, ' stack = ', stack)
-    flag = 0
 
-    for lst in stack:
-        dbclass = getDbClass(lst[0], myglobal._ltre_)
-        for nogoodfact in dbclass.notFacts:
-            bindings = unify(lst, nogoodfact)
-            if bindings != None:
-                print('=================================================')
-                print('Making Contradition!!!!!!')
-                print('level = ', level, ' stack = ', stack)
-                tmp = [':not']
-                tmp.append(nogoodfact)
-                print('Assumption:', lst, ' Facts: ', tmp)
-                flag = 1
+def checkContradictionAssumptions(level, stack):
+    #print('level =', level, 'stack =', stack)
+
+    dbclass = getDbClass(':not', myglobal._ltre_)
+
+    flag = False
+
+    for nogoodfacts in dbclass.facts:
+        #print('nogoodfact => ', nogoodfacts[1:][0])
+
+        if isinstance(nogoodfacts[1:][0][0], list):
+            for nogoodfact in nogoodfacts[1:][0]:
+                if nogoodfact in stack:
+                    flag = True
+                    printContradictionInfo(level, stack, nogoodfact)
+                    break
+        else:
+            nogoodfact = nogoodfacts[1:][0]
+            if nogoodfact in stack:
+                flag = True
+                printContradictionInfo(level, stack, nogoodfact)
                 break
-        if flag:
+
+        if flag == True:
             break
 
-    return True if flag == 0 else False
+    return True if flag == True else False
+
+
+def printContradictionInfo(level, stack, assumption):
+    print('=================================================')
+    print('Making Contradition!!!!!!')
+    print('level = ', level, ' stack = ', stack)
+    tmp = [':not']
+    tmp.append(assumption)
+    print('Assumption:', assumption, ' Facts: ', tmp)
 
 
 #### Need to be modified!!! Because different phrase has different format!!!!!! ####
@@ -112,7 +129,8 @@ if __name__ == '__main__':
     #choiceSets = solveCryptarithmeticProblem()
     #ddSearch(choiceSets)
 
-    ss = [['a','b','c']]
-    ss[0] = []
-    ss[0].append([1,2,3])
-    print(ss)
+    ss = [':not', [['likes-gambling', '?a'], ['likes-animals', '?b']]]
+    print(ss[1:][0])
+
+    ss = [':not', ['likes-gambling', '?a']]
+    print(ss[1:][0])
