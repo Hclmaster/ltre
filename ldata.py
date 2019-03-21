@@ -49,7 +49,7 @@ def getDbClass(fact, ltre, flag=0):
             ltre.dbclassTable[fact] = dbclass
             return dbclass
 
-def getCandidates(pattern, ltre):
+def getCandidates(pattern, ltre=None):
     """
     Retrieve all facts from the dbclass of a given pattern
     :param pattern:
@@ -58,6 +58,9 @@ def getCandidates(pattern, ltre):
     """
     #print('pattern => ', pattern)
     #print('getDbclass => ', getDbClass(pattern, ltre).name)
+
+    if ltre == None:
+        ltre = myglobal._ltre_
 
     dbclass = getDbClass(pattern, ltre)
 
@@ -71,7 +74,7 @@ def getCandidates(pattern, ltre):
             # if it starts with '?', then retrieve all the facts,
             # because we don't know which one to match
             if isVariable(item):
-                for key, dbclass in myglobal._ltre_.dbclassTable.items():
+                for key, dbclass in ltre.dbclassTable.items():
                     for datum in dbclass.facts:
                         facts[idx].append(datum)
 

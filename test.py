@@ -1,6 +1,9 @@
 import math
 import operator as op
 from collections import ChainMap as Environment
+import myglobal
+import copy
+from ltinter import *
 
 Symbol = str          # A Lisp Symbol is implemented as a Python str
 List   = list         # A Lisp List   is implemented as a Python list
@@ -135,6 +138,9 @@ def bindVar(lst, bindings):
 
     return lst
 
+def change(ltre):
+    ltre = 3
+
 
 if __name__ == '__main__':
     #print(global_env)
@@ -154,5 +160,25 @@ if __name__ == '__main__':
     print(any(isinstance(i, list) for i in aa))
     """
 
-    t = ('same-entity', '?a1')
-    print('same-entity' in t)
+    ex1 = createLtre(title="Ex1", debugging=False)
+    print(ex1.title)
+
+    ex2 = copy.deepcopy(ex1)
+    ex2.title = "Ex2"
+
+    lst = []
+    lst.append(ex1)
+
+    idx = len(lst)
+
+    lst.append(copy.deepcopy(lst[idx-1]))
+    print(lst)
+
+    lst[1].title = 'hahah'
+
+    print(lst[0].title)
+
+    global t;
+    t = 1
+    change(t)
+    print(t)

@@ -1,4 +1,7 @@
 import warnings
+import myglobal
+from lrules import *
+from ldata import *
 from lrules import *
 import copy
 
@@ -50,13 +53,17 @@ def extractProblemLetters(problem):
     return letters
 
 # ================= Useless above ============================
-def ddSearch(choiceSets, level=0, stack=[[]]):
+
+global tmpEnv
+
+def ddSearch(choiceSets, level=0, stack=[[]], ltre=[]):
     #print('level ==> ', level)
     if choiceSets == None or choiceSets == []:
-        #print('***********************************************************')
-        #print('A feasible ddsearch solution is:')
-        #print('level =', level, ' stack =', stack[level-1])
+        print('***********************************************************')
+        print('A feasible ddsearch solution is:')
+        print('level =', level, ' stack =', stack[level-1])
         return
+
     choices = choiceSets[0]
 
     for choice in choices:
@@ -67,20 +74,38 @@ def ddSearch(choiceSets, level=0, stack=[[]]):
             else:
                 stack[level] = copy.deepcopy(stack[level-1])
                 stack[level].append(reformatPhrase(choice))
+            ltre.append(copy.deepcopy(myglobal._ltre_))
         else:
             stack.append([])
             stack[level] = copy.deepcopy(stack[level-1])
             stack[level].append(reformatPhrase(choice))
 
+            ltre.append(copy.deepcopy(ltre[level-1]))
+
         # if true, then ddsearch, otherwise, contradition!!!
-        if checkContradictionAssumptions(level, stack[level]) == False:
-            ddSearch(choiceSets[1:], level+1, stack)
+        if checkContradictionAssumptions(level, stack[level], ltre[level]) == False\
+                and withContradictionHandler(level, stack[level], ltre[level]) == False:
+            ddSearch(choiceSets[1:], level+1, stack, ltre)
 
 
-def checkContradictionAssumptions(level, stack):
+def withContradictionHandler(level, stack, ltre):
+    for assumption in stack:
+        tmpEnv = ltre
+        #print('assumption => ', assumption)
+        #print('tmpEnv => ', tmpEnv)
+        assertFact(assumption, tmpEnv)
+        runRules(tmpEnv)
+
+        if checkContradictionAssumptions(level, stack, ltre) == True:
+            return True
+
+    return False
+
+
+def checkContradictionAssumptions(level, stack, ltre):
     #print('level =', level, 'stack =', stack)
 
-    dbclass = getDbClass(':not', myglobal._ltre_)
+    dbclass = getDbClass(':not', ltre)
 
     flag = False
 
@@ -91,13 +116,13 @@ def checkContradictionAssumptions(level, stack):
             for nogoodfact in nogoodfacts[1:][0]:
                 if nogoodfact in stack:
                     flag = True
-                    printContradictionInfo(level, stack, nogoodfact)
+                    #printContradictionInfo(level, stack, nogoodfact)
                     break
         else:
             nogoodfact = nogoodfacts[1:][0]
             if nogoodfact in stack:
                 flag = True
-                printContradictionInfo(level, stack, nogoodfact)
+                #printContradictionInfo(level, stack, nogoodfact)
                 break
 
         if flag == True:

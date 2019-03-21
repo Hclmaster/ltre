@@ -125,18 +125,18 @@ def addRule(trigger, body):
     #for candidate in getCandidates(trigger, myglobal._ltre_):
         #tryRuleOn(rule, candidate, myglobal._ltre_)
 
-    constructCandidates(getCandidates(trigger, myglobal._ltre_), rule, 0, len(trigger))
+    constructCandidates(getCandidates(trigger, myglobal._ltre_), rule, 0, len(trigger), myglobal._ltre_)
 
 
-def constructCandidates(candidates, rule, idx, level, ans=[]):
+def constructCandidates(candidates, rule, idx, level, ltre, ans=[]):
     # like using dfs to construct the whole candidats facts within a list (list of lists)
     if idx == level:
-        tryRuleOn(rule, ans, myglobal._ltre_)
+        tryRuleOn(rule, ans, ltre)
         return
 
     for candidate in candidates[idx]:
         ans.append(candidate)
-        constructCandidates(candidates, rule, idx+1, level, ans)
+        constructCandidates(candidates, rule, idx+1, level, ltre, ans)
         ans.pop()
 
 def printRule(rule):
@@ -157,7 +157,7 @@ def tryRules(fact, ltre):
     for rule in getCandidateRules(fact, ltre):
         #printRule(rule)
         #tryRuleOn(rule, fact, ltre)
-        constructCandidates(getCandidates(rule.trigger, myglobal._ltre_), rule, 0, len(rule.trigger))
+        constructCandidates(getCandidates(rule.trigger, ltre), rule, 0, len(rule.trigger), ltre)
 
 def getCandidateRules(fact, ltre):
     """
@@ -172,8 +172,7 @@ def getCandidateRules(fact, ltre):
 
     for key,dbclass in myglobal._ltre_.dbclassTable.items():
         #print('dbclass name => ', dbclass.name)
-        if dbclass.rules != [] and (fact[0] in dbclass.name or any(isVariable(x) for x in dbclass.name))\
-                and fact == ['likes-animals', 'chico']:
+        if dbclass.rules != [] and (fact[0] in dbclass.name or any(isVariable(x) for x in dbclass.name)):
             for rule in dbclass.rules:
                 rules.append(rule)
                 #print('rules???')

@@ -96,6 +96,8 @@ if __name__ == '__main__':
     #print('======== Show Facts ========')
     showData()
 
+    #print('num => ', myglobal.num)
+
     #showNotData()
 
     #checkContradictionAssumptions()
